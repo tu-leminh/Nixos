@@ -49,33 +49,41 @@ in
 		isNormalUser = true;
 		description = "mt";
 		extraGroups = [ "networkmanager" "wheel" ];
-		packages = with pkgs; [
-			fish
+		packages = with pkgs; 
+		[
 		];
 		shell = pkgs.fish;
 	};
 	nixpkgs.config.allowUnfree = true;
-	environment.systemPackages = with pkgs; [
+	environment.systemPackages = with pkgs; 
+	[
 		neovim
-			git
-			wget
-			curl
-			htop
-			ranger
-			kubectl
-			kubernetes
-			fish
+		git
+		wget
+		curl
+		htop
+		ranger
+		kubectl
+		kubernetes
+		fish
 	];
 	programs.fish.enable = true;
+	programs.neovim =
+	{
+		enable = true;
+		defaultEditor = true;
+	};
 	system.stateVersion = "24.05";
 	nix.settings.experimental-features = ["nix-command" "flakes"];
-	services.k3s = {
+	services.k3s = 
+	{
 		enable      =  true;
 		clusterInit =  true;
 		role = "server";
 		extraFlags  = "--disable=traefik --write-kubeconfig-mode=0644";
 	};
-	environment.variables = {
-	    KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
+	environment.variables = 
+	{
+		KUBECONFIG = "/etc/rancher/k3s/k3s.yaml";
 	};
 }
