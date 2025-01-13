@@ -16,7 +16,7 @@ in
 		./Gnome/gnome.nix
 		./Neovim/neovim.nix
 		./Zsh/zsh.nix
-		./Hyprland/hyprland.nix
+		#./Hyprland/hyprland.nix
 		];
 	environment.systemPackages = with pkgs; 
 	[
