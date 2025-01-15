@@ -13,7 +13,7 @@ in
 		[ 
 		./Hardware/hardware-configuration.nix
 		./System/system.nix
-		#./Gnome/gnome.nix
+		./Gnome/gnome.nix
 		./Neovim/neovim.nix
 		./Zsh/zsh.nix
 		#./Hyprland/hyprland.nix
@@ -32,6 +32,11 @@ in
 		rofi
 		alacritty
 		chromium
+		pulseaudio
+		pamixer
+		pavucontrol
+		bluez
+		bluetui
 	];
 	system.stateVersion = "24.05";
 }

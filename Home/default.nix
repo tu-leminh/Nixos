@@ -8,9 +8,9 @@
 :
 {
 	imports = [
+	./i3/i3.nix
 	];
 	# home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
-	home.file.".config/i3/config".source = ./i3.conf;
 	# Minimal
 	home = {
 		username = "mt";
