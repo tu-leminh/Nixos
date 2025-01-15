@@ -51,10 +51,6 @@ in
 
 
 # Sound and bluetooth
-	sound = {
-		enable = true;
-	};
-
 	security.rtkit.enable = true;
 
 	services.pipewire = {

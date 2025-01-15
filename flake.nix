@@ -1,31 +1,25 @@
 {
-	description = "Your new nix config";
+	description = "NixOS configuration";
 
 	inputs = {
-		nixpkgs.url = "github:nixos/nixpkgs/nixos-23.11";
-		home-manager.url = "github:nix-community/home-manager/release-23.11";
+		nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+		home-manager.url = "github:nix-community/home-manager";
 		home-manager.inputs.nixpkgs.follows = "nixpkgs";
 	};
 
-	outputs = {
-		self,
-		nixpkgs,
-		home-manager,
-		...
-	} @ inputs: let
-	inherit (self) outputs;
-	in {
+	outputs = inputs@{ nixpkgs, home-manager, ... }: {
 		nixosConfigurations = {
 			dell = nixpkgs.lib.nixosSystem {
-				specialArgs = {inherit inputs outputs;};
-				modules = [./Nixos/default.nix];
-			};
-		};
-		homeConfigurations = {
-			"mt@dell" = home-manager.lib.homeManagerConfiguration {
-				pkgs = nixpkgs.legacyPackages.x86_64-linux;
-				extraSpecialArgs = {inherit inputs outputs;};
-				modules = [./Home/default.nix];
+				system = "x86_64-linux";
+				modules = [
+					./Nixos/default.nix
+					home-manager.nixosModules.home-manager
+					{
+						home-manager.useGlobalPkgs = true;
+						home-manager.useUserPackages = true;
+						home-manager.users.mt = import ./Home/default.nix;
+					}
+				];
 			};
 		};
 	};

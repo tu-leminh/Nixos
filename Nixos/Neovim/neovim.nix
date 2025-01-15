@@ -1,4 +1,4 @@
-	{
+{
 	inputs,
 	outputs,
 	lib,
@@ -14,4 +14,4 @@ in
 		enable = true;
 		defaultEditor = true;
 	};
-	}
+}

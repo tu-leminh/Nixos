@@ -8,10 +8,9 @@
 :
 {
 	imports = [
-	]
-        programs.kitty.enable = true; # required for the default Hyprland config
-        wayland.windowManager.hyprland.enable = true; # enable Hyprland
-        home.sessionVariables.NIXOS_OZONE_WL = "1";
+	];
+	# home.file.".config/hypr/hyprland.conf".source = ./hyprland.conf;
+	home.file.".config/i3/config".source = ./i3.conf;
 	# Minimal
 	home = {
 		username = "mt";
