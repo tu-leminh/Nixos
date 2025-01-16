@@ -37,6 +37,8 @@ in
 		pavucontrol
 		bluez
 		bluetui
+		bluetuith
+		firefox
 	];
 	system.stateVersion = "24.05";
 }
